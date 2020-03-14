@@ -88,5 +88,37 @@
 
         return $this;
     }
+
+    public function loadById($id){
+
+        $sql = new Sql();
+        $result = $sql->select("SELECT * FROM tb_usuario WHERE idusuario = :ID",array(
+            ":ID"=>$id
+        ));
+
+        if(count($result) > 0){
+
+            $row = $result[0];
+
+            $this->setIdusurio($row['idusuario']);
+            $this->setDessenha($row['dessenha']);
+            $this->setDeslogin($row['deslogin']);
+            $this->setDtcadastro(new Datetime($row['dtCadastro']));
+
+        }
+
+    }
+
+
+    public function __toString()
+    {
+        return json_encode(array(
+            "idusurio"=>$this->getIdusurio(),
+            "dessenha"=>$this->getDessenha(),
+            "deslogin"=>$this->getDeslogin(),
+            "dtcadastro"=>$this->getDtcadastro()->format("d/m/Y H:i:s")
+
+        ));
+    }
   }
 ?>
