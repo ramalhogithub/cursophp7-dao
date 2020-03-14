@@ -119,6 +119,29 @@
     }
 
 
+    public function login($login, $senha){
+
+        $sql = new Sql();
+        $result = $sql->select("SELECT * FROM tb_usuario WHERE deslogin = :LOGIN AND dessenha = :SENHA ", array(
+            ":LOGIN" => $login,
+            ":SENHA" => $senha
+        ));
+
+        if (count($result) > 0) {
+
+            $row = $result[0];
+
+            $this->setIdusurio($row['idusuario']);
+            $this->setDessenha($row['dessenha']);
+            $this->setDeslogin($row['deslogin']);
+            $this->setDtcadastro(new Datetime($row['dtCadastro']));
+        }else{
+            throw new Exception("Login e/ou senha inválidos.");
+        }
+
+    }
+
+
     //Ao ser estático não precisar instanciar um objeto Usuário
     public static function getList(){
         $sql = new sql();

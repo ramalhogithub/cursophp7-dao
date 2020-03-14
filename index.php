@@ -42,4 +42,34 @@
 
    echo json_encode($search);
 
+   echo "<br/>";
+
+   echo "TESTANDO O MÉTODOS LOGIN DA CLASSE USUÁRIO";
+
+   echo '<br/>';
+
+   echo "PASSANDO UM USUÁRIO VÁLIDO";
+
+    echo "<br/>";
+
+   $usuarioValido = new Usuario();
+   $usuarioValido->login("user","12345");
+   echo $usuarioValido;
+
+   echo "<br/>";
+
+   echo "AGORA PASSANDO UM USUÁRIO INVÁLIDO!";
+
+   echo "<br/>";
+
+   $usuarioInvalido = new Usuario();
+   $usuarioInvalido->login("mane", "678");
+
+   echo $$usuarioInvalido;
+
+
+
+
+
+
 ?>
