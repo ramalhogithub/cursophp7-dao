@@ -110,6 +110,13 @@
     }
 
 
+    public function getList(){
+        $sql = new sql();
+        return  $sql->select("SELECT * FROM tb_usuario ORDER BY idusuario;");
+
+    }
+
+
     public function __toString()
     {
         return json_encode(array(
