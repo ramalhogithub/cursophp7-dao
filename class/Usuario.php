@@ -109,9 +109,20 @@
 
     }
 
+    public static function search($login){
 
-    public function getList(){
+        $sql = new Sql();
+        return $sql->select("SELECT * FROM tb_usuario WHERE deslogin LIKE  :SEARCH  ORDER BY deslogin ", array(
+             ':SEARCH'=>"%".$login."%"
+        ));
+
+    }
+
+
+    //Ao ser estático não precisar instanciar um objeto Usuário
+    public static function getList(){
         $sql = new sql();
+
         return  $sql->select("SELECT * FROM tb_usuario ORDER BY idusuario;");
 
     }

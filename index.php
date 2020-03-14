@@ -31,4 +31,15 @@
 
    echo json_encode($lista);
 
+   echo "<br/>";
+
+   //CARREGA UMA LISTA DE USUÁRIOS BUSCANDO PELO LOGIN
+   $search = Usuario::search("user");
+
+   echo "CARREGA TODOS OS USUÁRIO CUJO LOGIN COMECEM POR 'USER' NO BANCO";
+
+   echo "<br/>";
+
+   echo json_encode($search);
+
 ?>
