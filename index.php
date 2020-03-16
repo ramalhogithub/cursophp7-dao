@@ -6,7 +6,7 @@
 
    $usuarios = $sql->select("SELECT * FROM tb_usuario");
 
-   echo json_encode($usuarios); */
+   echo json_encode($usuarios); 
 
    echo "PÁGINA DO USUÁRIO";
   
@@ -66,6 +66,27 @@
    $usuarioInvalido->login("mane", "678");
 
    echo $$usuarioInvalido;
+
+
+   echo "<br/>"; */
+
+   echo "INSERINDO UM USUÁRIO NOVO NO BANCO";
+
+   echo "<br/>";
+
+   $aluno = new Usuario("aluno_novo","12345");
+
+   /* $aluno->setDeslogin("aluno");
+   $aluno->setDessenha("12345"); => se tornam desnecessárias com o construtor */
+
+   $aluno->insert();
+
+   echo "NOVO USUÁRIO INSERIDO COM SUCESSO!";
+
+   echo "<br/>";
+
+   echo $aluno;
+
 
 
 

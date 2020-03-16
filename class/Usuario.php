@@ -98,12 +98,7 @@
 
         if(count($result) > 0){
 
-            $row = $result[0];
-
-            $this->setIdusurio($row['idusuario']);
-            $this->setDessenha($row['dessenha']);
-            $this->setDeslogin($row['deslogin']);
-            $this->setDtcadastro(new Datetime($row['dtCadastro']));
+            $this->setData($result[0]);
 
         }
 
@@ -130,11 +125,9 @@
         if (count($result) > 0) {
 
             $row = $result[0];
-
-            $this->setIdusurio($row['idusuario']);
-            $this->setDessenha($row['dessenha']);
-            $this->setDeslogin($row['deslogin']);
-            $this->setDtcadastro(new Datetime($row['dtCadastro']));
+           
+            $this->setData($result[0]);
+           
         }else{
             throw new Exception("Login e/ou senha inválidos.");
         }
@@ -161,5 +154,39 @@
 
         ));
     }
+
+    public function setData($data){
+
+          $this->setIdusurio($data['idusuario']);
+         $this->setDessenha($data['dessenha']);
+          $this->setDeslogin($data['deslogin']);
+          $this->setDtcadastro(new Datetime($data['dtcadastro']));
+
+    }
+
+
+  
+
+    public function __construct($login = "", $password = "")
+    {
+        $this->setDeslogin($login);
+        $this->setDessenha($password);
+    }
+
+    public function insert(){
+        
+               
+        $sql = new Sql();
+        $results = $sql->select("CALL sp_usuarios_insert(:LOGIN, :PASSWORD)", 
+        array(':LOGIN'=>$this->getDeslogin(),
+              ':PASSWORD'=>$this->getDessenha()
+    ));
+      if(count($results) > 0){
+         
+          $this->setData($results[0]);
+      }else{
+         
+      }
+    } 
   }
 ?>
