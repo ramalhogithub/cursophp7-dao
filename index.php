@@ -87,7 +87,7 @@
 
    echo $aluno; */
 
-   /* ATUALIZANDO UM USUAÁRIO */
+   /* ATUALIZANDO UM USUAÁRIO
 
    $usuario = new Usuario();
 
@@ -97,7 +97,21 @@
 
   
 
-   echo $usuario;
+   echo $usuario; */
+
+   /* DELETANDO UM USUÁRIO DO BANCO */
+
+   echo "VAMOS DELTAR O USUARIO 9"."<br/>";
+
+   $usuario = new Usuario();
+   $usuario->loadById(9);
+   $usuario->delete();
+
+   echo "USUÁRIO DELETADO COM SUCESSO!";
+
+
+  
+
 
 
 

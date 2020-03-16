@@ -203,10 +203,17 @@
             ':LOGIN'=>$this->getDeslogin(),
             ':PASSWORD'=>$this->getDessenha(),
             ':ID'=>$this->getIdusurio()
+        ));      
+
+    }
+
+
+    public function delete(){
+        $sql = new Sql();
+        $sql->query("DELETE FROM tb_usuario WHERE idusuario = :ID", array(
+        ':ID'=>$this->getIdusurio()
         ));
-
-       
-
+        
     }
   }
 ?>
