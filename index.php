@@ -68,7 +68,7 @@
    echo $$usuarioInvalido;
 
 
-   echo "<br/>"; */
+   echo "<br/>";
 
    echo "INSERINDO UM USUÁRIO NOVO NO BANCO";
 
@@ -79,13 +79,25 @@
    /* $aluno->setDeslogin("aluno");
    $aluno->setDessenha("12345"); => se tornam desnecessárias com o construtor */
 
-   $aluno->insert();
+   /* $aluno->insert();
 
    echo "NOVO USUÁRIO INSERIDO COM SUCESSO!";
 
    echo "<br/>";
 
-   echo $aluno;
+   echo $aluno; */
+
+   /* ATUALIZANDO UM USUAÁRIO */
+
+   $usuario = new Usuario();
+
+   $usuario->loadById(10);
+
+   $usuario->update("professor","abcd");
+
+  
+
+   echo $usuario;
 
 
 

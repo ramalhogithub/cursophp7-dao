@@ -91,6 +91,8 @@
 
     public function loadById($id){
 
+        
+
         $sql = new Sql();
         $result = $sql->select("SELECT * FROM tb_usuario WHERE idusuario = :ID",array(
             ":ID"=>$id
@@ -188,5 +190,23 @@
          
       }
     } 
+    
+
+    public function update($login, $password){
+
+        $this->setDeslogin($login);
+        $this->setDessenha($password);
+
+        $sql = new Sql();
+
+        $sql->query("UPDATE tb_usuario SET deslogin = :LOGIN, dessenha = :PASSWORD WHERE idusuario = :ID", array(
+            ':LOGIN'=>$this->getDeslogin(),
+            ':PASSWORD'=>$this->getDessenha(),
+            ':ID'=>$this->getIdusurio()
+        ));
+
+       
+
+    }
   }
 ?>
